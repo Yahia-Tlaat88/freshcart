@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserLogin";
 
 export default function Register() {
   const navigate = useNavigate()
