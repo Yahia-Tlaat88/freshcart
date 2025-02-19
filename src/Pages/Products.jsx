@@ -28,7 +28,6 @@ useEffect(() => { getAllProducts(); }, []);
     <div className='container mx-auto'>
       <h1 className='text-4xl text-center text-green-500 pb-3'>Products</h1>
       <div className='py-4'>
-      <SearchInput></SearchInput>
       </div>
     <div className='flex flex-wrap '>
 {allProductData?.map((ProductData) => <ProductCards key={ProductData._id} ProductData={ProductData} />)}
