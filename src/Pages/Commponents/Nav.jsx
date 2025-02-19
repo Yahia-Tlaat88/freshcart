@@ -6,12 +6,12 @@ import { CartContext } from '../context/CartContext'
 
 export default function Nav() {
 
-  const {userLogin,setUserLogin} =useContext(UserContext)
-  const navigate =useNavigate()
-  function Signout(){
+  const { userLogin, setUserLogin } = useContext(UserContext)
+  const navigate = useNavigate()
+  function Signout() {
     localStorage.removeItem("userToken");
     setUserLogin(null);
-   navigate("/login")
+    navigate("/login")
   }
   const [isOpen, setIsOpen] = useState(false)
 
@@ -33,25 +33,34 @@ export default function Nav() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-2 capitalize">
+          {userLogin !== null ? (
+            <>
+              <NavLink to='Home' className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">home</NavLink>
+              <NavLink to={'cart'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">cart</NavLink>
+              <NavLink to={'Wishlist'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">Wishlist</NavLink>
+              <NavLink to={'brands'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">brands</NavLink>
+              <NavLink to={'categories'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">categories</NavLink>
+              <NavLink to={'products'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">products</NavLink>
+            </>
 
-          <NavLink to='Home' className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">home</NavLink>
-          <NavLink to={'cart'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">cart</NavLink>
-          <NavLink to={'Wishlist'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">Wishlist</NavLink>
-          <NavLink to={'brands'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">brands</NavLink>
-          <NavLink to={'categories'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">categories</NavLink>
-          <NavLink to={'products'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">products</NavLink>
+          ) : (
+            console.log(userLogin)
+
+          )
+          }
+
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end space-x-3">
-        {userLogin === null  ? (<>
+          {userLogin === null ? (<>
             <NavLink to={'Register'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">Register</NavLink>
             <NavLink to={'login'} className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">Login <span aria-hidden="true">→</span></NavLink>
-              
-            </>
-                ) : (
-              <Link to={'login'} onClick={Signout}>
+
+          </>
+          ) : (
+            <Link to={'login'} onClick={Signout}>
               <span className=" font-medium text-gray-900 hover:text-green-500 transition delay-40 ms-2">Log Out</span>
-              </Link>
-                )}
+            </Link>
+          )}
         </div>
       </nav>
       {/* Mobile menu, show/hide based on menu open state. */}
@@ -74,16 +83,24 @@ export default function Nav() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
+                {userLogin !== null ? (
 
-                <NavLink to='Home' className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">home</NavLink>
-                <NavLink to={'cart'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">cart</NavLink>
-                <NavLink to={'Wishlist'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">Wishlist</NavLink>
-                <NavLink to={'brands'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">brands</NavLink>
-                <NavLink to={'categories'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">categories</NavLink>
-                <NavLink to={'products'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">products</NavLink>
+                  <>
+                    <NavLink to='Home' className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">home</NavLink>
+                    <NavLink to={'cart'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">cart</NavLink>
+                    <NavLink to={'Wishlist'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">Wishlist</NavLink>
+                    <NavLink to={'brands'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">brands</NavLink>
+                    <NavLink to={'categories'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">categories</NavLink>
+                    <NavLink to={'products'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">products</NavLink>
+                  </>
+                ) : (
+                  console.log(userLogin)
+
+                )}
+
               </div>
               <div className="py-6">
-                {!userLogin  ? (<>
+                {!userLogin ? (<>
                   <NavLink to={'Register'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">Register</NavLink>
                   <NavLink to={'login'} className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50 hover:text-green-500 transition delay-40">Log in <span aria-hidden="true">→</span></NavLink>
 
