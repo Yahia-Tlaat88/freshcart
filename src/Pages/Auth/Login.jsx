@@ -29,7 +29,7 @@ export default function Login() {
         localStorage.setItem("userToken",data.token)
         toast.success("welcome")
         setUserLogin(data.token)
-        navigate("/")
+        navigate("/Home")
       }
       console.log("🚀 ~ handleSubmitForm ~ data:", data);
     } catch (error) {

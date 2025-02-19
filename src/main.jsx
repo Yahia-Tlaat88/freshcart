@@ -25,7 +25,7 @@ const Routes = createBrowserRouter(
     path: "/",
     element: <UserContextProvider><Layout /></UserContextProvider>,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <Login /> },
       { path: "Home", element: <Home /> },
       { path: "Cart", element: <Cart /> },
       { path: "brands", element: <Brands /> },
